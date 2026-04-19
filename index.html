@@ -3,485 +3,478 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova_Dhruv Portfolio</title>
+  <title>Dhruvendra | Student Developer</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&amp;family=Rajdhani:wght@300;400;500;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Outfit:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow-x:hidden}
-:root{--bg:#0d1b2a;--cyan:#0ff;--pink:#64b5f6;--yellow:#00d9ff;--text:#e6e6e6}
-body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif}
-#loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
-#loader.hidden{opacity:0;visibility:hidden}
-.loader-bar{width:200px;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;position:relative}
-.loader-bar::after{content:'';position:absolute;left:-50%;width:50%;height:100%;background:linear-gradient(90deg,var(--cyan),var(--pink));animation:loadSlide 1s ease-in-out infinite}
-@keyframes loadSlide{to{left:100%}}
-.loader-text{font-family:'Orbitron',monospace;color:var(--cyan);font-size:14px;letter-spacing:4px;margin-bottom:16px;animation:pulse 1s ease-in-out infinite alternate}
-@keyframes pulse{to{opacity:.4}}
-canvas#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.glass{background:rgba(255,255,255,.04);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:16px}
-.neon-border{border:1px solid rgba(0,245,255,.25);box-shadow:0 0 15px rgba(0,245,255,.08),inset 0 0 15px rgba(0,245,255,.03)}
-.neon-border:hover{border-color:rgba(0,245,255,.5);box-shadow:0 0 30px rgba(0,245,255,.15),0 0 60px rgba(255,0,200,.08),inset 0 0 20px rgba(0,245,255,.05)}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .3s}
-nav.scrolled{background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,245,255,.1)}
-.nav-link{position:relative;color:rgba(230,230,230,.7);transition:color .3s}
-.nav-link:hover,.nav-link.active{color:var(--cyan)}
-.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);transition:width .3s}
-.nav-link:hover::after,.nav-link.active::after{width:100%}
-.btn-cyber{position:relative;padding:12px 32px;font-family:'Orbitron',monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;border:1px solid;border-radius:4px;cursor:pointer;transition:all .3s;overflow:hidden;text-decoration:none;display:inline-block}
-.btn-cyber::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
-.btn-cyber:hover::before{opacity:1}
-.btn-cyan{color:var(--cyan);border-color:var(--cyan);background:rgba(0,245,255,.05)}
-.btn-cyan:hover{background:rgba(0,245,255,.15);box-shadow:0 0 30px rgba(0,245,255,.3),0 0 60px rgba(0,245,255,.1)}
-.btn-cyan::before{background:linear-gradient(135deg,rgba(0,245,255,.1),transparent)}
-.btn-pink{color:var(--pink);border-color:var(--pink);background:rgba(255,0,200,.05)}
-.btn-pink:hover{background:rgba(255,0,200,.15);box-shadow:0 0 30px rgba(255,0,200,.3),0 0 60px rgba(255,0,200,.1)}
-.btn-pink::before{background:linear-gradient(135deg,rgba(255,0,200,.1),transparent)}
-.typing-cursor{display:inline-block;width:2px;height:1em;background:var(--cyan);margin-left:4px;animation:blink .8s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.skill-card{transition:all .4s cubic-bezier(.25,.46,.45,.94)}
-.skill-card:hover{transform:translateY(-6px);box-shadow:0 0 25px rgba(0,245,255,.15)}
-.project-card{transition:all .4s cubic-bezier(.25,.46,.45,.94)}
-.project-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 0 40px rgba(0,245,255,.15),0 0 80px rgba(255,0,200,.08)}
-.section-title{font-family:'Orbitron',monospace;position:relative;display:inline-block}
-.section-title::after{content:'';position:absolute;bottom:-8px;left:0;width:60px;height:3px;background:linear-gradient(90deg,var(--cyan),var(--pink));border-radius:2px}
-.glow-line{height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent);opacity:.3}
-#cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(0,245,255,.06),transparent 70%);transform:translate(-50%,-50%);transition:left .1s ease-out,top .1s ease-out}
-.stagger-1{transition-delay:.1s}
-.stagger-2{transition-delay:.2s}
-.stagger-3{transition-delay:.3s}
-.stagger-4{transition-delay:.4s}
-.progress-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.06);overflow:hidden}
-.progress-fill{height:100%;border-radius:3px;width:0;transition:width 1.2s cubic-bezier(.25,.46,.45,.94)}
-.progress-fill.animated{width:var(--w)}
-input,textarea{background:rgba(255,255,255,.04)!important;border:1px solid rgba(255,255,255,.1)!important;color:var(--text)!important;font-family:'Rajdhani',sans-serif!important;transition:border-color .3s!important}
-input:focus,textarea:focus{outline:none!important;border-color:var(--cyan)!important;box-shadow:0 0 15px rgba(0,245,255,.1)!important}
-.form-success{background:rgba(0,245,255,.1);border:1px solid rgba(0,245,255,.3);color:var(--cyan);padding:12px 20px;border-radius:8px;display:none;font-family:'Rajdhani',sans-serif}
-@media(max-width:768px){.btn-cyber{padding:10px 24px;font-size:11px}}
-.scroll-wrapper{height:100%;overflow-y:auto;overflow-x:hidden}
-#whatsapp-btn{position:fixed;bottom:32px;right:32px;z-index:50;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#25d366,#20ba5f);border:2px solid rgba(37,211,102,.3);box-shadow:0 0 25px rgba(37,211,102,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(.25,.46,.45,.94);text-decoration:none}
-#whatsapp-btn:hover{transform:scale(1.15);box-shadow:0 0 50px rgba(37,211,102,.6),0 0 80px rgba(37,211,102,.3);bottom:38px}
-#whatsapp-btn i{color:#fff;width:28px;height:28px}
-#whatsapp-label{position:fixed;bottom:104px;right:32px;z-index:50;background:rgba(10,20,30,.95);border:1px solid rgba(37,211,102,.4);border-radius:12px;padding:10px 16px;color:#25d366;font-family:'Orbitron',monospace;font-size:12px;letter-spacing:1px;white-space:nowrap;opacity:0;visibility:hidden;transform:translateY(10px);transition:all .3s;pointer-events:none}
-#whatsapp-btn:hover~#whatsapp-label,#whatsapp-label:hover{opacity:1;visibility:visible;transform:translateY(0)}
-@media(max-width:640px){#whatsapp-btn{bottom:24px;right:24px;width:52px;height:52px}#whatsapp-btn:hover{bottom:28px}#whatsapp-label{bottom:88px;right:24px;font-size:11px;padding:8px 12px}}
+  html, body { height: 100%; margin: 0; font-family: 'Outfit', sans-serif; }
+  * { box-sizing: border-box; }
+
+  :root {
+    --bg-deep: #091221;
+    --blue: #234a9e;
+    --cyan: #0585E6;
+    --pink: #FE0369;
+    --beige: #ffe6c6;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #0091ff, #0e44b7, #FE0369);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .heading-gradient {
+    background: linear-gradient(135deg, #0585E6, #FE0369);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(9, 18, 33, 0.5);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(5, 133, 230, 0.2);
+  }
+
+  .card-minimal {
+    background: rgba(2, 54, 165, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(5, 133, 230, 0.15);
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .card-minimal:hover {
+    border-color: rgba(43, 0, 255, 0.433);
+    box-shadow: 0 12px 40px rgba(1, 143, 252, 0.404);
+    transform: translateY(-4px);
+  }
+
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #0585E6, #FE0369);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-glow:hover::before { opacity: 1; }
+  .btn-glow:hover { box-shadow: 0 0 25px rgba(5, 133, 230, 0.3); }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(60px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .slide-right { opacity: 0; animation: slideInRight 0.8s ease forwards; }
+
+  @keyframes float-subtle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .float { animation: float-subtle 5s ease-in-out infinite; }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink-cursor {
+    0%, 49%, 100% { border-right-color: #0585E6; }
+    50%, 99% { border-right-color: transparent; }
+  }
+
+  .typewriter {
+    overflow: hidden;
+    border-right: 3px solid #0585E6;
+    white-space: nowrap;
+    animation: typewriter 3.5s steps(40, end) infinite, blink-cursor 0.75s step-end infinite;
+  }
+
+  .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(5, 133, 230, 0.1);
+    border: 1px solid rgba(5, 133, 230, 0.25);
+    color: #0585E6;
+    transition: all 0.3s ease;
+  }
+
+  .skill-badge:hover {
+    background: rgba(5, 133, 230, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(5, 133, 230, 0.15);
+  }
+
+  .divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(5, 133, 230, 0.2), transparent);
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(5, 133, 230, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(5, 133, 230, 0.5), 0 0 60px rgba(254, 3, 105, 0.2); }
+  }
+
+  .glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+  code { font-family: 'Space Mono', monospace; }
+
+  @media (max-width: 768px) {
+    .hide-mobile { display: none; }
+  }
 </style>
-  <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <style>body { box-sizing: border-box; }</style>
  </head>
- <body class="h-full"><!-- Loader -->
-  <div id="loader">
-   <div style="text-align:center">
-    <div class="loader-text">
-     INITIALIZING
+ <body class="h-full" style="background: #091221; color: #F5E6D3;">
+  <div id="app" class="h-full overflow-auto"><!-- HEADER NAV -->
+   <header class="glass fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+     <div class="text-2xl font-bold" style="color: #0585E6;">
+      o_O
+     </div>
+     <nav class="hidden md:flex gap-8 text-sm font-medium" style="color: rgba(245,230,211,0.7);"><a href="#work" class="hover:text-white transition">Work</a> <a href="#about" class="hover:text-white transition">About</a> <a href="#skills" class="hover:text-white transition">Skills</a> <a href="#contact" class="hover:text-white transition">Contact</a>
+     </nav><button id="mobile-menu-btn" class="md:hidden" style="color: #F5E6D3;"> <i data-lucide="menu" style="width:24px;height:24px;"></i> </button>
     </div>
-    <div class="loader-bar"></div>
-   </div>
-  </div><!-- Cursor Glow -->
-  <div id="cursor-glow"></div><!-- Particles -->
-  <canvas id="particles"></canvas>
-  <div class="scroll-wrapper" id="scrollWrapper"><!-- Nav -->
-   <nav id="navbar" class="px-4 md:px-8">
-    <div class="max-w-6xl mx-auto flex items-center justify-between" style="height:64px"><a href="#hero" class="font-bold text-lg" style="font-family:'Orbitron',monospace;color:var(--cyan);letter-spacing:2px">NOVA<span style="color:var(--pink)">_</span>DHRUV</a> <button id="menuBtn" class="md:hidden" style="color:var(--cyan)" aria-label="Toggle menu"> <i data-lucide="menu" style="width:24px;height:24px"></i> </button>
-     <div id="navLinks" class="hidden md:flex items-center gap-8"><a href="#about" class="nav-link text-sm" style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:1px">ABOUT</a> <a href="#skills" class="nav-link text-sm" style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:1px">SKILLS</a> <a href="#projects" class="nav-link text-sm" style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:1px">PROJECTS</a> <a href="#contact" class="nav-link text-sm" style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:1px">CONTACT</a>
+   </header><!-- MOBILE MENU -->
+   <div id="mobile-nav" class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-8 text-xl font-semibold" style="background: rgba(9,18,33,0.95); backdrop-filter: blur(20px); color: #F5E6D3;"><button id="mobile-close" class="absolute top-5 right-6"> <i data-lucide="x" style="width:28px;height:28px;"></i> </button> <a href="#work" class="hover:text-cyan transition">Work</a> <a href="#about" class="hover:text-cyan transition">About</a> <a href="#skills" class="hover:text-cyan transition">Skills</a> <a href="#contact" class="hover:text-cyan transition">Contact</a>
+   </div><!-- HERO -->
+   <section id="hero" class="w-full min-h-full flex items-center justify-center px-6 pt-20 md:pt-0" style="position: relative;">
+    <div class="absolute inset-0 opacity-30" style="background: radial-gradient(circle at 20% 50%, rgba(5, 133, 230, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(254, 3, 105, 0.08) 0%, transparent 50%);"></div>
+    <div class="relative z-10 max-w-4xl w-full text-center">
+     <div class="fade-in" style="animation-delay: 0.1s;">
+      <p class="text-sm md:text-base font-medium tracking-widest uppercase mb-6" style="color: rgba(5, 133, 230, 0.8);">Frontend Developer &amp; Creative Coder</p>
      </div>
-    </div><!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden md:hidden pb-4">
-     <div class="flex flex-col gap-4 items-center"><a href="#about" class="nav-link" style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:1px">ABOUT</a> <a href="#skills" class="nav-link" style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:1px">SKILLS</a> <a href="#projects" class="nav-link" style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:1px">PROJECTS</a> <a href="#contact" class="nav-link" style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:1px">CONTACT</a>
+     <div class="fade-in" style="animation-delay: 0.2s;">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 heading-gradient " style="letter-spacing: -0.02em;"><span id="hero-heading" style="display: block;">Dhruvendra P. Singh</span></h1>
      </div>
+     <div class="fade-in" style="animation-delay: 0.3s;">
+      <p class="text-lg md:text-2xl font-light mb-8" style="color: rgba(245, 230, 211, 0.7);">I craft <span class="typewriter">beautiful web experiences</span></p>
+     </div>
+     <div id="hero-sub" class="fade-in text-base md:text-lg" style="animation-delay: 0.4s; color: rgba(245,230,211,0.6); max-width: 500px; margin: 0 auto 12px; line-height: 1.6;">
+      Frontend Developer | UI Designer | Interaction Enthusiast
+     </div>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="animation-delay: 0.5s;"><a href="#work" class="btn-glow px-8 py-4 rounded-lg font-semibold text-sm text-white inline-flex items-center justify-center gap-2" style="background: linear-gradient(135deg, #0236A5, #0585E6); z-index: 1;"> <i data-lucide="arrow-down" style="width:18px;height:18px;"></i> View My Work </a> <a href="#contact" class="btn-glow px-8 py-4 rounded-lg font-semibold text-sm border" style="border-color: rgba(5,133,230,0.4); color: #F5E6D3; z-index: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px;"> <i data-lucide="mail" style="width:18px;height:18px;"></i> Get In Touch </a>
+     </div>
+    </div><!-- Floating elements -->
+    <div class="absolute top-20 left-10 w-40 h-40 rounded-full float" style="background: radial-gradient(circle, rgba(5, 133, 230, 0.05), transparent 70%); animation-delay: 0s;"></div>
+    <div class="absolute bottom-32 right-10 w-32 h-32 rounded-full float" style="background: radial-gradient(circle, rgba(254, 3, 105, 0.05), transparent 70%); animation-delay: 1.5s;"></div>
+   </section><!-- WORK/PROJECTS -->
+   <section id="work" class="w-full px-6 py-24 max-w-6xl mx-auto fade-in">
+    <div class="mb-16">
+     <h2 class="text-4xl md:text-5xl font-bold mb-4 heading-gradient" style="letter-spacing: -0.01em;">Featured Work</h2>
+     <div class="divider-line" style="max-width: 100px; margin-top: 8px;"></div>
     </div>
-   </nav><!-- Hero -->
-   <section id="hero" class="relative flex items-center justify-center" style="min-height:100%;padding:120px 20px 80px">
-    <div class="text-center relative" style="z-index:2">
-     <p class="mb-4" style="font-family:'Share Tech Mono',monospace;color:var(--pink);font-size:14px;letter-spacing:4px">// WELCOME TO MY WORLD</p>
-     <h1 id="heroName" class="text-4xl md:text-6xl lg:text-7xl font-black mb-3" style="font-family:'Orbitron',monospace;background:linear-gradient(135deg,var(--cyan),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2">Dhruvendra P. Singh</h1>
-     <p id="heroAlias" class="text-xl md:text-2xl mb-6" style="font-family:'Share Tech Mono',monospace;color:var(--yellow)">Nova_Dhruv (o_0)</p>
-     <div class="mb-10" style="min-height:2em"><span id="typingText" style="font-family:'Share Tech Mono',monospace;font-size:clamp(14px,2.5vw,18px);color:rgba(230,230,230,.8)"></span><span class="typing-cursor"></span>
-     </div>
-     <div class="flex flex-wrap gap-4 justify-center"><a href="#projects" class="btn-cyber btn-cyan">View Projects</a> <a href="#contact" class="btn-cyber btn-pink">Contact Me</a>
-     </div>
-    </div>
-   </section><!-- About -->
-   <section id="about" class="py-20 px-4 md:px-8 relative" style="z-index:2">
-    <div class="max-w-4xl mx-auto">
-     <h2 class="section-title text-2xl md:text-3xl font-bold mb-12 reveal" style="color:var(--cyan)">ABOUT ME</h2>
-     <div class="glass neon-border p-6 md:p-10 reveal stagger-1">
-      <p id="aboutText" class="text-base md:text-lg leading-relaxed" style="color:rgba(230,230,230,.85);line-height:1.8">I'm a passionate Frontend Developer who thrives on crafting immersive, story-driven web experiences. With a strong foundation in React, JavaScript, and modern CSS, I blend creativity with clean code to build digital worlds that captivate users. My approach — <span style="color:var(--yellow)">Vibe Coding</span> — embraces rapid prototyping with AI tools, pushing the boundaries of what's possible in web development. From cinematic landing pages to functional business sites, I transform ideas into pixel-perfect reality.</p>
-      <div class="glow-line mt-8 mb-6"></div>
-      <div class="flex flex-wrap gap-6">
-       <div class="flex items-center gap-2">
-        <i data-lucide="map-pin" style="width:16px;height:16px;color:var(--cyan)"></i><span style="font-size:14px;color:rgba(230,230,230,.6)">India</span>
+    <div class="grid md:grid-cols-2 gap-8" id="project-grid"></div>
+   </section><!-- ABOUT -->
+   <section id="about" class="w-full px-6 py-24 max-w-5xl mx-auto fade-in">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+     <div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 heading-gradient" style="letter-spacing: -0.01em;">About Me</h2>
+      <div class="divider-line mb-8" style="max-width: 100px;"></div>
+      <p id="about-bio" class="text-base md:text-lg leading-relaxed mb-8" style="color: rgba(245,230,211,0.7);">Focused on building immersive user interfaces, smooth interactions, and modern web experiences with clean and efficient frontend architecture. I blend design thinking with technical precision to create digital experiences that feel alive.</p>
+      <div class="space-y-4">
+       <div class="flex items-start gap-4"><i data-lucide="sparkles" style="width:24px;height:24px;color:#0585E6;flex-shrink:0;margin-top:2px;"></i>
+        <div>
+         <p class="font-semibold mb-1">Design-Driven Development</p>
+         <p class="text-sm" style="color: rgba(245,230,211,0.6);">Every line of code serves a purpose in creating beautiful interfaces</p>
+        </div>
        </div>
-       <div class="flex items-center gap-2">
-        <i data-lucide="zap" style="width:16px;height:16px;color:var(--yellow)"></i><span style="font-size:14px;color:rgba(230,230,230,.6)">Vibe Coder</span>
-       </div>
-       <div class="flex items-center gap-2">
-        <i data-lucide="code-2" style="width:16px;height:16px;color:var(--pink)"></i><span style="font-size:14px;color:rgba(230,230,230,.6)">Frontend Developer</span>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Skills -->
-   <section id="skills" class="py-20 px-4 md:px-8 relative" style="z-index:2">
-    <div class="max-w-5xl mx-auto">
-     <h2 class="section-title text-2xl md:text-3xl font-bold mb-12 reveal" style="color:var(--cyan)">SKILLS</h2>
-     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="skillsGrid">
-     </div>
-    </div>
-   </section><!-- Projects -->
-   <section id="projects" class="py-20 px-4 md:px-8 relative" style="z-index:2">
-    <div class="max-w-6xl mx-auto">
-     <h2 class="section-title text-2xl md:text-3xl font-bold mb-12 reveal" style="color:var(--cyan)">PROJECTS</h2>
-     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
-     </div>
-    </div>
-   </section><!-- Contact -->
-   <section id="contact" class="py-20 px-4 md:px-8 relative" style="z-index:2">
-    <div class="max-w-4xl mx-auto">
-     <h2 class="section-title text-2xl md:text-3xl font-bold mb-12 reveal" style="color:var(--cyan)">CONTACT</h2>
-     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="reveal stagger-1">
-       <div class="glass neon-border p-6 md:p-8 h-full">
-        <h3 class="text-xl font-semibold mb-6" style="font-family:'Orbitron',monospace;color:var(--pink);font-size:15px">GET IN TOUCH</h3>
-        <div class="flex flex-col gap-5"><a id="contactEmailLink" href="mailto:psinghdhruvendra@gmail.com" class="flex items-center gap-3 group" style="text-decoration:none;color:var(--text)">
-          <div class="p-2 rounded-lg" style="background:rgba(0,245,255,.08)">
-           <i data-lucide="mail" style="width:18px;height:18px;color:var(--cyan)"></i>
-          </div><span id="contactEmailText" style="font-size:14px;transition:color .3s" class="group-hover:text-cyan-300">psinghdhruvendra@gmail.com</span> </a> <a id="contactGithubLink" href="https://github.com/psinghdhruvendra-arch" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group" style="text-decoration:none;color:var(--text)">
-          <div class="p-2 rounded-lg" style="background:rgba(255,0,200,.08)">
-           <i data-lucide="github" style="width:18px;height:18px;color:var(--pink)"></i>
-          </div><span id="contactGithubText" style="font-size:14px;transition:color .3s" class="group-hover:text-pink-300">psinghdhruvendra-arch</span> </a> <a href="tel:+919410521000" class="flex items-center gap-3 group" style="text-decoration:none;color:var(--text)">
-          <div class="p-2 rounded-lg" style="background:rgba(255,214,0,.08)">
-           <i data-lucide="phone" style="width:18px;height:18px;color:var(--yellow)"></i>
-          </div><span style="font-size:14px">+91 9410521000</span> </a> <a href="https://wa.me/919410521000" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group" style="text-decoration:none;color:var(--text)">
-          <div class="p-2 rounded-lg" style="background:rgba(0,245,255,.08)">
-           <i data-lucide="message-circle" style="width:18px;height:18px;color:var(--cyan)"></i>
-          </div><span style="font-size:14px">WhatsApp</span> </a>
+       <div class="flex items-start gap-4"><i data-lucide="zap" style="width:24px;height:24px;color:#FE0369;flex-shrink:0;margin-top:2px;"></i>
+        <div>
+         <p class="font-semibold mb-1">Performance Focused</p>
+         <p class="text-sm" style="color: rgba(245,230,211,0.6);">Lightning-fast experiences that feel smooth and responsive</p>
         </div>
        </div>
       </div>
-      <div class="reveal stagger-2">
-       <form id="contactForm" class="glass neon-border p-6 md:p-8 h-full">
-        <h3 class="text-xl font-semibold mb-6" style="font-family:'Orbitron',monospace;color:var(--pink);font-size:15px">SEND MESSAGE</h3>
-        <div class="flex flex-col gap-4">
-         <div><label for="fname" class="block mb-1" style="font-size:12px;color:rgba(230,230,230,.5);font-family:'Orbitron',monospace;letter-spacing:1px">NAME</label> <input type="text" id="fname" class="w-full px-4 py-3 rounded-lg" style="font-size:15px" required>
+     </div>
+     <div class="space-y-8">
+      <div class="flex justify-center gap-6 mb-8">
+       <div class="relative w-24 h-24 rounded-full flex items-center justify-center flex-col" style="background: rgba(5, 133, 230, 0.1); border: 2px solid rgba(5, 133, 230, 0.3); box-shadow: 0 0 20px rgba(5, 133, 230, 0.2);">
+        <p class="text-2xl font-bold" style="color: #0585E6;">20+</p>
+        <p class="text-xs mt-1" style="color: rgba(245,230,211,0.6);">Projects</p>
+       </div>
+       <div class="relative w-24 h-24 rounded-full flex items-center justify-center flex-col" style="background: rgba(254, 3, 105, 0.1); border: 2px solid rgba(254, 3, 105, 0.3); box-shadow: 0 0 20px rgba(254, 3, 105, 0.2);">
+        <p class="text-2xl font-bold" style="color: #FE0369;">99.9%</p>
+        <p class="text-xs mt-1" style="color: rgba(245,230,211,0.6);">Satisfaction</p>
+       </div>
+       <div class="relative w-24 h-24 rounded-full flex items-center justify-center flex-col" style="background: rgba(5, 133, 230, 0.1); border: 2px solid rgba(5, 133, 230, 0.3); box-shadow: 0 0 20px rgba(5, 133, 230, 0.2);">
+        <p class="text-2xl font-bold" style="color: #0585E6;">30+</p>
+        <p class="text-xs mt-1" style="color: rgba(245,230,211,0.6);">Repos</p>
+       </div>
+      </div>
+      <div class="card-minimal p-6">
+       <p class="text-sm font-semibold mb-6" style="color: #0585E6;">Client Reviews</p>
+       <div class="space-y-4">
+        <div class="flex items-start gap-4 pb-4" style="border-bottom: 1px solid rgba(5, 133, 230, 0.1);">
+         <div class="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center" style="background: rgba(254, 3, 105, 0.15); border: 1.5px solid rgba(254, 3, 105, 0.3);">
+          <i data-lucide="user" style="width:20px;height:20px;color:#FE0369;"></i>
          </div>
-         <div><label for="femail" class="block mb-1" style="font-size:12px;color:rgba(230,230,230,.5);font-family:'Orbitron',monospace;letter-spacing:1px">EMAIL</label> <input type="email" id="femail" class="w-full px-4 py-3 rounded-lg" style="font-size:15px" required>
-         </div>
-         <div><label for="fmsg" class="block mb-1" style="font-size:12px;color:rgba(230,230,230,.5);font-family:'Orbitron',monospace;letter-spacing:1px">MESSAGE</label> <textarea id="fmsg" rows="4" class="w-full px-4 py-3 rounded-lg" style="font-size:15px;resize:none" required></textarea>
-         </div><button type="submit" class="btn-cyber btn-cyan w-full text-center" style="margin-top:4px">TRANSMIT</button>
-         <div id="formSuccess" class="form-success">
-          <i data-lucide="check-circle" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:6px"></i> Message received! I'll get back to you soon.
+         <div class="flex-grow">
+          <div class="flex gap-1 mb-2">
+           <i data-lucide="star" style="width:12px;height:12px;fill:#FE0369;color:#FE0369;"></i> <i data-lucide="star" style="width:12px;height:12px;fill:#FE0369;color:#FE0369;"></i> <i data-lucide="star" style="width:12px;height:12px;fill:#FE0369;color:#FE0369;"></i> <i data-lucide="star" style="width:12px;height:12px;fill:#FE0369;color:#FE0369;"></i> <i data-lucide="star" style="width:12px;height:12px;fill:#FE0369;color:#FE0369;"></i>
+          </div>
+          <p class="text-xs font-semibold" style="color: #F5E6D3;">Rohan Mishra</p>
+          <p class="text-xs mb-2" style="color: rgba(245,230,211,0.5);">Owner of Mishra Bakers</p>
+          <p class="text-xs leading-relaxed" style="color: rgba(245,230,211,0.6);">"Exceptional work! Dhruv transformed our vision into reality."</p>
          </div>
         </div>
-       </form>
+        <div class="flex items-start gap-4">
+         <div class="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center" style="background: rgba(5, 133, 230, 0.15); border: 1.5px solid rgba(5, 133, 230, 0.3);">
+          <i data-lucide="user" style="width:20px;height:20px;color:#0585E6;"></i>
+         </div>
+         <div class="flex-grow">
+          <div class="flex gap-1 mb-2">
+           <i data-lucide="star" style="width:12px;height:12px;fill:#0585E6;color:#0585E6;"></i> <i data-lucide="star" style="width:12px;height:12px;fill:#0585E6;color:#0585E6;"></i> <i data-lucide="star" style="width:12px;height:12px;fill:#0585E6;color:#0585E6;"></i> <i data-lucide="star" style="width:12px;height:12px;fill:#0585E6;color:#0585E6;"></i> <i data-lucide="star" style="width:12px;height:12px;fill:#0585E6;color:#0585E6;"></i>
+          </div>
+          <p class="text-xs font-semibold" style="color: #F5E6D3;">Rananajay Singh</p>
+          <p class="text-xs mb-2" style="color: rgba(245,230,211,0.5);">Founder of Baba Agro Hub</p>
+          <p class="text-xs leading-relaxed" style="color: rgba(245,230,211,0.6);">"Professional, creative, and delivered beyond expectations!"</p>
+         </div>
+        </div>
+       </div>
       </div>
      </div>
     </div>
-   </section><!-- Footer -->
-   <footer class="py-8 text-center relative" style="z-index:2;border-top:1px solid rgba(255,255,255,.05)">
-    <p style="font-family:'Share Tech Mono',monospace;font-size:13px;color:rgba(230,230,230,.3)">© 2024 Nova_Dhruv — Built with <span style="color:var(--pink)">♥</span> &amp; <span style="color:var(--yellow)">Vibe Coding</span></p>
+   </section><!-- SKILLS -->
+   <section id="skills" class="w-full px-6 py-24 max-w-6xl mx-auto fade-in">
+    <div class="mb-16">
+     <h2 class="text-4xl md:text-5xl font-bold mb-4 heading-gradient" style="letter-spacing: -0.01em;">Technical Skills</h2>
+     <div class="divider-line" style="max-width: 100px; margin-top: 8px;"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-16">
+     <div>
+      <h3 class="text-lg font-bold mb-6" style="color: rgba(245,230,211,0.9);">Front-End Technologies</h3>
+      <div class="flex flex-wrap gap-3" id="frontend-skills"></div>
+     </div>
+     <div>
+      <h3 class="text-lg font-bold mb-6" style="color: rgba(245,230,211,0.9);">Design &amp; Tools</h3>
+      <div class="flex flex-wrap gap-3" id="design-skills"></div>
+     </div>
+    </div><!-- Skill Levels -->
+    <div class="mt-20 grid md:grid-cols-2 gap-8">
+     <div class="card-minimal p-6">
+      <div class="flex justify-between items-center mb-4"><span class="font-semibold">UI/UX Design</span> <span style="color: #0585E6;">92%</span>
+      </div>
+      <div class="w-full h-2 rounded-full" style="background: rgba(5, 133, 230, 0.15);">
+       <div class="h-full rounded-full" style="width: 92%; background: linear-gradient(90deg, #0585E6, #0236A5);"></div>
+      </div>
+     </div>
+     <div class="card-minimal p-6">
+      <div class="flex justify-between items-center mb-4"><span class="font-semibold">Web Development</span> <span style="color: #FE0369;">88%</span>
+      </div>
+      <div class="w-full h-2 rounded-full" style="background: rgba(254, 3, 105, 0.15);">
+       <div class="h-full rounded-full" style="width: 88%; background: linear-gradient(90deg, #FE0369, #0585E6);"></div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CONTACT -->
+   <section id="contact" class="w-full px-6 py-24 max-w-6xl mx-auto fade-in">
+    <div class="text-center mb-12">
+     <h2 class="text-4xl md:text-5xl font-bold mb-4 heading-gradient" style="letter-spacing: -0.01em;">Let's Connect</h2>
+     <div class="divider-line mx-auto" style="max-width: 100px; margin-top: 8px;"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8"><!-- CONTACT INFO CARD -->
+     <div class="card-minimal p-8 md:p-12">
+      <h3 class="text-2xl font-bold mb-8" style="color: #F5E6D3;">Contact Information</h3>
+      <div class="space-y-8">
+       <div class="flex items-start gap-4">
+        <div class="w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(5, 133, 230, 0.15); border: 1.5px solid rgba(5, 133, 230, 0.3);"><i data-lucide="mail" style="width:24px;height:24px;color:#0585E6;"></i>
+        </div>
+        <div class="flex-grow">
+         <p class="text-sm mb-1" style="color: rgba(245,230,211,0.6);">Email Address</p><a href="mailto:psinghdhruvendra@gmail.com" class="font-semibold hover:text-cyan transition" style="color: #F5E6D3;">psinghdhruvendra@gmail.com</a>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 3, 105, 0.15); border: 1.5px solid rgba(254, 3, 105, 0.3);"><i data-lucide="phone" style="width:24px;height:24px;color:#FE0369;"></i>
+        </div>
+        <div class="flex-grow">
+         <p class="text-sm mb-1" style="color: rgba(245,230,211,0.6);">Phone Number</p><a href="tel:+919410521000" class="font-semibold hover:text-pink transition" style="color: #F5E6D3;">+91 9410521000</a>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(5, 133, 230, 0.15); border: 1.5px solid rgba(5, 133, 230, 0.3);"><i data-lucide="github" style="width:24px;height:24px;color:#0585E6;"></i>
+        </div>
+        <div class="flex-grow">
+         <p class="text-sm mb-1" style="color: rgba(245,230,211,0.6);">GitHub Profile</p><a href="https://github.com/psinghdhruvendra-arch" target="_blank" rel="noopener noreferrer" class="font-semibold hover:text-cyan transition" style="color: #F5E6D3;">psinghdhruvendra-arch</a>
+        </div>
+       </div>
+       <div class="divider-line my-6"></div>
+       <p class="text-sm leading-relaxed" style="color: rgba(245,230,211,0.6);">Feel free to reach out anytime. I'm always excited to discuss new projects and collaborate on interesting ideas!</p>
+      </div>
+     </div><!-- CONTACT FORM CARD -->
+     <div class="card-minimal p-8 md:p-12">
+      <h3 class="text-2xl font-bold mb-8" style="color: #F5E6D3;">Send Me a Message</h3>
+      <form id="contact-form" class="space-y-6">
+       <div><label for="c-name" class="block text-sm font-semibold mb-2" style="color: rgba(245,230,211,0.7);">Your Name</label> <input id="c-name" type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-lg text-sm outline-none focus:ring-2" style="background: rgba(5,133,230,0.08); border: 1px solid rgba(5,133,230,0.2); color: #F5E6D3; --tw-ring-color: #0585E6;">
+       </div>
+       <div><label for="c-email" class="block text-sm font-semibold mb-2" style="color: rgba(245,230,211,0.7);">Email Address</label> <input id="c-email" type="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg text-sm outline-none focus:ring-2" style="background: rgba(5,133,230,0.08); border: 1px solid rgba(5,133,230,0.2); color: #F5E6D3; --tw-ring-color: #0585E6;">
+       </div>
+       <div><label for="c-msg" class="block text-sm font-semibold mb-2" style="color: rgba(245,230,211,0.7);">Message</label> <textarea id="c-msg" rows="4" placeholder="Tell me about your project..." class="w-full px-4 py-3 rounded-lg text-sm outline-none focus:ring-2 resize-none" style="background: rgba(5,133,230,0.08); border: 1px solid rgba(5,133,230,0.2); color: #F5E6D3; --tw-ring-color: #0585E6;"></textarea>
+       </div><button type="submit" class="btn-glow w-full py-3.5 rounded-lg font-semibold text-sm text-white" style="background: linear-gradient(135deg, #0236A5, #FE0369); z-index: 1;"> <i data-lucide="send" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:8px;"></i>Send Message </button>
+       <p id="form-msg" class="text-center text-sm font-medium hidden" style="color: #0585E6;"></p>
+      </form>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="w-full px-6 py-12 text-center" style="border-top: 1px solid rgba(5, 133, 230, 0.1);">
+    <p class="text-sm" style="color: rgba(245,230,211,0.5);">© 2025 Dhruvendra P. Singh. All rights reserved.</p>
    </footer>
-  </div><!-- end scroll-wrapper --> <!-- WhatsApp Button --> <a id="whatsapp-btn" href="https://wa.me/919410521000" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp"> <i data-lucide="message-circle"></i> </a>
-  <div id="whatsapp-label">
-   CHAT NOW
   </div>
   <script>
-// ── Config & SDK ──
-const defaultConfig = {
-  background_color: '#0a0a0f',
-  surface_color: 'rgba(255,255,255,0.04)',
-  text_color: '#e6e6e6',
-  primary_action_color: '#00f5ff',
-  secondary_action_color: '#ff00c8',
-  font_family: 'Rajdhani',
-  font_size: 16,
-  hero_name: 'Dhruvendra P. Singh',
-  hero_alias: 'Nova_Dhruv (o_0)',
-  hero_tagline: 'Frontend Developer crafting immersive, story-driven web experiences.',
-  about_text: "I'm a passionate Frontend Developer who thrives on crafting immersive, story-driven web experiences. With a strong foundation in React, JavaScript, and modern CSS, I blend creativity with clean code to build digital worlds that captivate users. My approach — Vibe Coding — embraces rapid prototyping with AI tools, pushing the boundaries of what's possible in web development. From cinematic landing pages to functional business sites, I transform ideas into pixel-perfect reality.",
-  contact_email: 'psinghdhruvendra@gmail.com',
-  contact_github: 'psinghdhruvendra-arch'
-};
+    // DATA
+    const projects = [
+      { title: 'Itachi Uchiha Landing Page', desc: 'Dark-themed storytelling UI with immersive anime-inspired design and smooth scroll effects.', url: 'https://psinghdhruvendra-arch.github.io/Itachi-The-silence-behind-the-Massacre/', repo: 'https://github.com/psinghdhruvendra-arch/Itachi-The-silence-behind-the-Massacre', tags: ['Design', 'Interaction', 'Animation'] },
+      { title: 'Obito Uchiha Landing Page', desc: 'Emotional narrative-based landing page with cinematic visuals and compelling user engagement.', url: 'https://psinghdhruvendra-arch.github.io/Obito-Uchiha/', repo: 'https://github.com/psinghdhruvendra-arch/Obito-Uchiha', tags: ['Frontend', 'UI/UX', 'JavaScript'] },
+      { title: 'Indian Biodiversity', desc: 'Informational platform showcasing India\'s biodiversity data with interactive elements.', url: 'https://psinghdhruvendra-arch.github.io/theWildlifeOfIndia/', repo: 'https://github.com/psinghdhruvendra-arch/theWildlifeOfIndia', tags: ['Data', 'Information Design', 'Responsive'] },
+      { title: 'Baba Agro Hub', desc: 'Responsive business website with clean UI, product showcase and customer-centric design.', url: 'https://psinghdhruvendra-arch.github.io/BabaAgroHub/', repo: 'https://github.com/psinghdhruvendra-arch/BabaAgroHub', tags: ['Freelance', 'Business', 'Responsive'] },
+    ];
 
-const skills = [
-  { cat: 'Frontend', icon: 'monitor', color: 'var(--cyan)', items: [{ n: 'HTML', p: 90 },{ n: 'CSS', p: 85 },{ n: 'JavaScript', p: 80 },{ n: 'React', p: 75 }] },
-  { cat: 'Backend & Database', icon: 'server', color: 'var(--pink)', items: [{ n: 'Node.js', p: 65 },{ n: 'SQL', p: 60 }] },
-  { cat: 'Programming', icon: 'code-2', color: 'var(--yellow)', items: [{ n: 'Python', p: 70 },{ n: 'Java', p: 65 }] },
-  { cat: 'Workflow', icon: 'git-branch', color: 'var(--pink)', items: [{ n: 'Git & GitHub', p: 80 },{ n: 'AI Tools', p: 85 },{ n: 'Vibe Coding', p: 90 }] }
-];
+    const frontendSkills = ['HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind CSS', 'GSAP', 'Responsive Design', 'Web APIs'];
+    const designSkills = ['UI/UX Design', 'Figma', 'Animation', 'Prototyping', 'Interaction Design', 'Performance', 'Accessibility', 'Typography'];
 
-const projects = [
-  { t: 'Itachi Uchiha Landing Page', d: 'Cinematic, story-driven landing page with immersive UI and smooth transitions.', u: 'https://psinghdhruvendra-arch.github.io/Itachi-The-silence-behind-the-Massacre/', tag: 'Storytelling' },
-  { t: 'Obito Uchiha Landing Page', d: 'A visually rich interface exploring transformation and storytelling through design.', u: 'https://psinghdhruvendra-arch.github.io/Obito-Uchiha/', tag: 'Creative' },
-  { t: 'Indian Biodiversity', d: 'Informational website with clean UI and structured content.', u: 'https://psinghdhruvendra-arch.github.io/theWildlifeOfIndia/', tag: 'Informational' },
-  { t: 'Varsha Coaching Center', d: 'Client project focused on course information and user-friendly design.', u: 'https://psinghdhruvendra-arch.github.io/Varsha-Coching-classes/', tag: 'Freelance' },
-  { t: 'Baba Agro Hub', d: 'Business website for agro-based services and product showcasing.', u: 'https://psinghdhruvendra-arch.github.io/BabaAgroHub/', tag: 'Freelance' },
-  { t: 'Tsukiko Uchiha', d: 'Creative AI-based concept project with modern UI and storytelling.', u: 'https://sukiko-chronicle--singh07varsha.replit.app/', tag: 'Experimental' }
-];
-
-// ── Build Skills Grid ──
-function buildSkills() {
-  const g = document.getElementById('skillsGrid');
-  g.innerHTML = '';
-  skills.forEach((s, i) => {
-    const card = document.createElement('div');
-    card.className = 'glass neon-border skill-card p-6 reveal stagger-' + (i % 4 + 1);
-    let bars = s.items.map(it => `
-      <div class="mb-3">
-        <div class="flex justify-between mb-1"><span style="font-size:13px;color:rgba(230,230,230,.7)">${it.n}</span><span style="font-size:12px;color:${s.color}">${it.p}%</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="--w:${it.p}%;background:linear-gradient(90deg,${s.color},rgba(255,255,255,.15))"></div></div>
-      </div>
-    `).join('');
-    card.innerHTML = `
-      <div class="flex items-center gap-3 mb-5">
-        <i data-lucide="${s.icon}" style="width:20px;height:20px;color:${s.color}"></i>
-        <h3 style="font-family:'Orbitron',monospace;font-size:14px;letter-spacing:1px;color:${s.color}">${s.cat.toUpperCase()}</h3>
-      </div>
-      ${bars}
-    `;
-    g.appendChild(card);
-  });
-}
-
-// ── Build Projects Grid ──
-function buildProjects() {
-  const g = document.getElementById('projectsGrid');
-  g.innerHTML = '';
-  const tagColors = { Storytelling: 'var(--cyan)', Creative: 'var(--pink)', Informational: 'var(--yellow)', Freelance: 'var(--cyan)', Experimental: 'var(--pink)' };
-  projects.forEach((p, i) => {
-    const card = document.createElement('div');
-    card.className = 'glass neon-border project-card p-6 reveal stagger-' + (i % 4 + 1);
-    const tc = tagColors[p.tag] || 'var(--cyan)';
-    card.innerHTML = `
-      <div class="mb-4"><span style="font-family:'Share Tech Mono',monospace;font-size:11px;padding:4px 10px;border-radius:4px;background:rgba(0,245,255,.08);color:${tc};border:1px solid ${tc}30">${p.tag}</span></div>
-      <h3 style="font-family:'Orbitron',monospace;font-size:15px;color:var(--text);margin-bottom:10px">${p.t}</h3>
-      <p style="font-size:14px;color:rgba(230,230,230,.6);line-height:1.6;margin-bottom:20px">${p.d}</p>
-      <a href="${p.u}" target="_blank" rel="noopener noreferrer" class="btn-cyber btn-cyan" style="font-size:11px;padding:8px 20px">
-        <i data-lucide="external-link" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:6px"></i>LIVE DEMO
-      </a>
-    `;
-    g.appendChild(card);
-  });
-}
-
-// ── Particles ──
-function initParticles() {
-  const c = document.getElementById('particles');
-  const ctx = c.getContext('2d');
-  let w, h, particles = [];
-  function resize() { w = c.width = window.innerWidth; h = c.height = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-  const count = Math.min(60, Math.floor(window.innerWidth / 20));
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * w, y: Math.random() * h,
-      vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4,
-      r: Math.random() * 2 + 1,
-      color: Math.random() > .5 ? 'rgba(0,245,255,' : 'rgba(255,0,200,',
-      alpha: Math.random() * .5 + .2
+    // RENDER PROJECTS
+    const projGrid = document.getElementById('project-grid');
+    projects.forEach(p => {
+      projGrid.innerHTML += `
+        <div class="card-minimal p-6 md:p-8 group flex flex-col h-full">
+          <div class="flex flex-wrap gap-2 mb-4">${p.tags.map(t => `<span class="skill-badge">${t}</span>`).join('')}</div>
+          <h3 class="text-xl md:text-2xl font-bold mb-3" style="color: #F5E6D3; group-hover:color: #0585E6;">${p.title}</h3>
+          <p class="text-sm md:text-base mb-6 flex-grow" style="color: rgba(245,230,211,0.6);">${p.desc}</p>
+          <div class="flex gap-3">
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-semibold text-sm px-4 py-2 rounded-lg flex-1 justify-center" style="color: #F5E6D3; border: 1px solid rgba(5,133,230,0.3); hover:border-color: rgba(5,133,230,0.6);">
+              <i data-lucide="external-link" style="width:16px;height:16px;"></i>
+              Live
+            </a>
+            <a href="${p.repo}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-semibold text-sm px-4 py-2 rounded-lg flex-1 justify-center" style="color: #F5E6D3; border: 1px solid rgba(254,3,105,0.3);">
+              <i data-lucide="github" style="width:16px;height:16px;"></i>
+              Repo
+            </a>
+          </div>
+        </div>`;
     });
-  }
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-      if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + p.alpha + ')';
-      ctx.fill();
-      // Lines
-      for (let j = i + 1; j < particles.length; j++) {
-        const q = particles[j];
-        const dx = p.x - q.x, dy = p.y - q.y;
-        const dist = dx * dx + dy * dy;
-        if (dist < 12000) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = 'rgba(0,245,255,' + (.08 * (1 - dist / 12000)) + ')';
-          ctx.lineWidth = .5;
-          ctx.stroke();
-        }
-      }
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
 
-// ── Typing Animation ──
-function typeWriter(el, text, speed = 50) {
-  let i = 0;
-  el.textContent = '';
-  function t() {
-    if (i < text.length) { el.textContent += text.charAt(i); i++; setTimeout(t, speed); }
-  }
-  t();
-}
+    // RENDER SKILLS
+    document.getElementById('frontend-skills').innerHTML = frontendSkills.map(s => `<span class="skill-badge">${s}</span>`).join('');
+    document.getElementById('design-skills').innerHTML = designSkills.map(s => `<span class="skill-badge">${s}</span>`).join('');
 
-// ── Scroll Reveal ──
-function initReveal() {
-  const sw = document.getElementById('scrollWrapper');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    // MOBILE NAV
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-nav').classList.remove('hidden');
+      document.getElementById('mobile-nav').classList.add('flex');
     });
-  }, { threshold: 0.1, root: sw });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  // Progress bars
-  const obs2 = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('animated');
-    });
-  }, { threshold: 0.3, root: sw });
-  document.querySelectorAll('.progress-fill').forEach(el => obs2.observe(el));
-}
 
-// ── Nav active state ──
-function initNavScroll() {
-  const sw = document.getElementById('scrollWrapper');
-  const nav = document.getElementById('navbar');
-  const links = document.querySelectorAll('.nav-link');
-  const sections = ['about', 'skills', 'projects', 'contact'];
-  sw.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', sw.scrollTop > 50);
-    let current = '';
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && el.offsetTop - 120 <= sw.scrollTop) current = id;
+    document.getElementById('mobile-close').addEventListener('click', () => {
+      document.getElementById('mobile-nav').classList.add('hidden');
+      document.getElementById('mobile-nav').classList.remove('flex');
     });
-    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
-  });
-}
 
-// ── Smooth Scroll ──
-function initSmoothScroll() {
-  const sw = document.getElementById('scrollWrapper');
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
+    document.querySelectorAll('#mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-nav').classList.add('hidden');
+        document.getElementById('mobile-nav').classList.remove('flex');
+      });
+    });
+
+    // CONTACT FORM
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
       e.preventDefault();
-      const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if (target) sw.scrollTo({ top: target.offsetTop - 64, behavior: 'smooth' });
-      document.getElementById('mobileMenu').classList.add('hidden');
+      const msg = document.getElementById('form-msg');
+      msg.textContent = '✨ Message sent! I\'ll get back to you soon.';
+      msg.classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => msg.classList.add('hidden'), 4000);
     });
-  });
-}
 
-// ── Cursor Glow ──
-function initCursorGlow() {
-  const g = document.getElementById('cursor-glow');
-  if (window.matchMedia('(pointer:fine)').matches) {
-    document.addEventListener('mousemove', (e) => {
-      g.style.left = e.clientX + 'px';
-      g.style.top = e.clientY + 'px';
-    });
-  } else { g.style.display = 'none'; }
-}
+    // ELEMENT SDK
+    const defaultConfig = {
+      hero_heading: "Dhruvendra P. Singh",
+      hero_subheading: "Frontend Developer | UI Designer | Interaction Enthusiast",
+      about_bio: "Focused on building immersive user interfaces, smooth interactions, and modern web experiences with clean and efficient frontend architecture. I blend design thinking with technical precision to create digital experiences that feel alive.",
+      background_color: "#091221",
+      surface_color: "rgba(2, 54, 165, 0.04)",
+      text_color: "#F5E6D3",
+      primary_action: "#0585E6",
+      secondary_action: "#FE0369",
+      font_family: "Outfit",
+      font_size: 16,
+    };
 
-// ── Contact Form ──
-function initForm() {
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const s = document.getElementById('formSuccess');
-    s.style.display = 'block';
-    e.target.reset();
-    setTimeout(() => { s.style.display = 'none'; }, 4000);
-  });
-}
+    function applyConfig(config) {
+      const h = document.getElementById('hero-heading');
+      const s = document.querySelector('#hero p:nth-of-type(3)');
+      const b = document.getElementById('about-bio');
 
-// ── Mobile Menu ──
-function initMobileMenu() {
-  document.getElementById('menuBtn').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('hidden');
-  });
-}
+      if (h) h.textContent = config.hero_heading || defaultConfig.hero_heading;
+      if (s) s.textContent = config.hero_subheading || defaultConfig.hero_subheading;
+      if (b) b.textContent = config.about_bio || defaultConfig.about_bio;
 
-// ── Element SDK ──
-function applyConfig(config) {
-  const c = k => config[k] || defaultConfig[k];
-  document.getElementById('heroName').textContent = c('hero_name');
-  document.getElementById('heroAlias').textContent = c('hero_alias');
-  // Re-type tagline only if changed
-  const tagline = c('hero_tagline');
-  if (applyConfig._lastTagline !== tagline) {
-    applyConfig._lastTagline = tagline;
-    typeWriter(document.getElementById('typingText'), tagline, 40);
-  }
-  document.getElementById('aboutText').innerHTML = c('about_text').replace(/Vibe Coding/g, '<span style="color:var(--yellow)">Vibe Coding</span>');
-  document.getElementById('contactEmailText').textContent = c('contact_email');
-  document.getElementById('contactEmailLink').href = 'mailto:' + c('contact_email');
-  document.getElementById('contactGithubText').textContent = c('contact_github');
-  document.getElementById('contactGithubLink').href = 'https://github.com/' + c('contact_github');
+      document.body.style.background = config.background_color || defaultConfig.background_color;
+      document.body.style.color = config.text_color || defaultConfig.text_color;
 
-  // Colors
-  document.body.style.background = c('background_color');
-  document.documentElement.style.setProperty('--bg', c('background_color'));
-  document.documentElement.style.setProperty('--text', c('text_color'));
-  document.body.style.color = c('text_color');
+      const font = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${font}, Outfit, sans-serif`;
 
-  // Font
-  const ff = c('font_family');
-  document.body.style.fontFamily = `${ff}, Rajdhani, sans-serif`;
-  const bs = c('font_size');
-  document.querySelectorAll('p, span, label, a:not(.btn-cyber)').forEach(el => {
-    if (!el.closest('[style*="font-family:\'Orbitron"]') && !el.closest('[style*="Share Tech"]')) {
-      el.style.fontFamily = `${ff}, Rajdhani, sans-serif`;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(el => {
+        const currentSize = window.getComputedStyle(el).fontSize;
+        const ratio = parseFloat(currentSize) / 16;
+        el.style.fontSize = `${baseSize * ratio}px`;
+      });
     }
-  });
-}
-applyConfig._lastTagline = '';
 
-if (window.elementSdk) {
-  window.elementSdk.init({
-    defaultConfig,
-    onConfigChange: async (config) => { applyConfig(config); },
-    mapToCapabilities: (config) => ({
-      recolorables: [
-        { get: () => config.background_color || defaultConfig.background_color, set: v => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
-        { get: () => config.surface_color || defaultConfig.surface_color, set: v => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
-        { get: () => config.text_color || defaultConfig.text_color, set: v => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
-        { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: v => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
-        { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: v => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
-      ],
-      borderables: [],
-      fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
-      fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
-    }),
-    mapToEditPanelValues: (config) => new Map([
-      ['hero_name', config.hero_name || defaultConfig.hero_name],
-      ['hero_alias', config.hero_alias || defaultConfig.hero_alias],
-      ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
-      ['about_text', config.about_text || defaultConfig.about_text],
-      ['contact_email', config.contact_email || defaultConfig.contact_email],
-      ['contact_github', config.contact_github || defaultConfig.contact_github]
-    ])
-  });
-}
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => applyConfig(config),
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+            { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+            { get: () => config.primary_action || defaultConfig.primary_action, set: (v) => { config.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); } },
+            { get: () => config.secondary_action || defaultConfig.secondary_action, set: (v) => { config.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); } },
+          ],
+          borderables: [],
+          fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+          fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } },
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["hero_heading", config.hero_heading || defaultConfig.hero_heading],
+          ["hero_subheading", config.hero_subheading || defaultConfig.hero_subheading],
+          ["about_bio", config.about_bio || defaultConfig.about_bio],
+        ]),
+      });
+    }
 
-// ── Init ──
-buildSkills();
-buildProjects();
-lucide.createIcons();
-initParticles();
-initCursorGlow();
-initMobileMenu();
-initSmoothScroll();
-initForm();
-applyConfig(defaultConfig);
-
-// Loader
-setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1500);
-// Reveal after loader
-setTimeout(() => { initReveal(); initNavScroll(); }, 1600);
-</script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eb11c1854bf8af8',t:'MTc3NTk4NTE1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ee890b9b0a3a85a',t:'MTc3NjU2NjY0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
